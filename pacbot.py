@@ -116,10 +116,10 @@ def main(argv=None):
                    dest="state",
                    help="setautoproxystate(on/off)",
                    type="string")
-    #opt.add_option("-s", "--state",
-                   #dest="state",
-                   #help="setautoproxystate(on/off)",
-                   #type="string")
+    opt.add_option("-u", "--update",
+                   dest="update",
+                   help="update NetworkInfo",
+                   action="store_true")
     opt.add_option("-o", "--output",
                    dest="outputfile",
                    help="write output to <file>",
@@ -129,9 +129,13 @@ def main(argv=None):
     isEnable = opt.state != 'off'
 
     if len(args) > 0:
-        configfile = argv[0]
+        configfile = args[0]
     else:
-        configfile = 'rules.yaml'
+        configfile = 'rules.ypac'
+
+    if not os.path.isfile(configfile):
+        print 'Sorry, I need rules file'
+        return
 
     outputfile = opt.outputfile or 'rules.pac'
     autoproxyurl = 'file://localhost' + os.path.abspath(outputfile)
@@ -140,14 +144,21 @@ def main(argv=None):
 
     pacbot = Pacbot()
 
-    try:
+    if not opt.update and os.path.isfile(cachefile):
         cache = open(cachefile, 'r')
         networkInfo = pickle.load(cache)
-        pacbot.updateNetworkInfo(*networkInfo)
-    except:
+        pacbot.updateNetworkInfo(**networkInfo)
+    else:
         networkInfo = pacbot.updateNetworkInfo()
         cache = open(cachefile, 'wb')
         pickle.dump(networkInfo, cache)
+
+    if opt.update:
+        if isEnable:
+            pacbot.enable(outputfile)
+        else:
+            pacbot.disable()
+        return
 
     if isEnable:
         data = yaml.load(open(configfile, 'r'))

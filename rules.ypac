@@ -1,3 +1,4 @@
+#!/usr/local/bin/pacbot
 default:
   type: direct
 
