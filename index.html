@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>MacPacbot by dexteryy</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/dexteryy/MacPacbot">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/dexteryy/MacPacbot/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/dexteryy/MacPacbot/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>MacPacbot</h1>
+          <p>a Python toolkit for PAC(auto proxy configuration) of Mac OS X</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/dexteryy">dexteryy</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>MacPacbot</h1>
+
+<p>MacPacbot is a Python toolkit for PAC(auto proxy configuration) of Mac OS X, which makes it much easier to create, edit and enable PAC script.
+It could transform a simple YAML config into a valid PAC script. </p>
+
+<h2>Install</h2>
+
+<pre><code>pip install MacPacbot
+</code></pre>
+
+<h2>Usage</h2>
+
+<p>Transform YAML info PAC:</p>
+
+<pre><code>sudo pacbot &lt;yaml_file&gt; -o &lt;pac_file&gt;
+</code></pre>
+
+<p>Automatically detect network-service and update auto proxy configuration:</p>
+
+<pre><code>sudo pacbot -u [-o &lt;pac_file&gt;]
+</code></pre>
+
+<p>Disable auto proxy in current network-service:</p>
+
+<pre><code>sudo pacbot -s off
+</code></pre>
+
+<p>Vim plugin:</p>
+
+<div class="highlight"><pre>    <span class="k">function</span><span class="p">!</span> EnablePAC<span class="p">()</span>
+        <span class="k">if</span> &amp;<span class="k">filetype</span> <span class="p">==</span> <span class="s1">'javascript'</span>
+            <span class="p">!</span>sudo pacbot <span class="p">-</span><span class="k">u</span> <span class="p">-</span><span class="k">o</span> %
+        <span class="k">elseif</span> &amp;<span class="k">filetype</span> <span class="p">==</span> <span class="s1">'yaml'</span>
+            <span class="p">!</span>sudo pacbot %
+        <span class="k">endif</span>
+    <span class="k">endfunction</span>
+
+    command<span class="p">!</span> PACenable <span class="k">call</span> EnablePAC<span class="p">()</span> 
+    autocmd<span class="p">!</span> bufwritepost *.pac :PACenable
+    autocmd<span class="p">!</span> bufwritepost *.ypac :PACenable
+</pre></div>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
