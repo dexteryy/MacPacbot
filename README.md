@@ -10,12 +10,15 @@ It could transform a simple YAML config into a valid PAC script.
 ## Usage
 
 Transform YAML info PAC:
+
     sudo pacbot <yaml_file> -o <pac_file>
 
 Automatically detect network-service and update auto proxy configuration:
+
     sudo pacbot -u [-o <pac_file>]
 
 Disable auto proxy in current network-service:
+
     sudo pacbot -s off
 
 Vim plugin:
