@@ -1,0 +1,114 @@
+#!/usr/local/bin/pacbot
+default_config:
+  type: direct
+
+#uidev:  # 前端开发项目，代理到本地文件
+  #proxy: 127.0.0.1:8081
+  #type: proxy 
+  #rules:
+  #- tudou.com
+  #- tudouui.com
+
+#gfwsocks:
+  #proxy: 127.0.0.1:7777
+  #type: socks
+  #rules:
+  ##- '*.twit*.com/*'
+  ##- python.org
+
+gfw:
+  #proxy: 127.0.0.1:7777
+  #type: socks
+  proxy: 10.8.0.1:8118
+  type: http 
+  rules:
+  - google.com
+  - google.com.hk
+  - gstatic.com
+  - googleusercontent.com
+  - googlecode.com
+  - google-analytics.com
+  - feedburner.com
+  - youtube.com
+  - ytimg.com
+  - blip.tv
+  - twitter.com
+  - '*.twit*.com/*'
+  - tweetdeck.com
+  - friendfeed.com
+  - plurk.com
+  - hootsuite.com
+  - facebook.com
+  - fbcdn.net
+  #- apple.com
+  - blogger.com
+  - blogspot.com
+  - wordpress.com
+  - livejournal.com
+  #- tumblr.com
+  - wp.com
+  - dropbox.com
+  - amazonaws.com
+  - cloudfront.net
+  - appspot.com
+  - rockstarapps.com
+  #- flickr.com
+  - staticflickr.com
+  - imageshack.us
+  - pandora.com
+  - last.fm
+  - diigo.com
+  - delicious.com
+  - trello.com
+  - slideshare.net
+  - scribd.com
+  - python.org
+  - freebsd.org
+  - yuiblog.com
+  - cssdrive.com
+  - thechangelog.com
+  - badassjs.com
+  - sourceforge.net
+  - github.com
+  - imdb.com
+  - wikia.com
+  - uncyclopedia.tw
+  - uncyc.org
+  - webarchive.org
+  - alexa.com
+  - ccthere.com
+  - cchere.com
+  - pixnet.net
+  #- deviantart.com
+  - soup.io
+  - ff.im
+  - bit.ly
+  - j.mp
+  - t.co
+  - zi.mu
+  #- 6park.com
+  - chromium.org
+  - chromeextensions.org
+  - golang.org
+  - opera.com
+  - xmarks.com
+  - ffmpeg.org
+  - versionsapp.com
+  - quixote.ca
+  - osxbook.com
+  #- photoshop.com
+  - pbworks.com
+  - serialz.to
+  - thepiratebay.org
+  - thepiratebay.se
+  #- demonoid.com
+  #- megaupload.com
+  - nytimes.com
+  - bbc.co.uk
+  - ftchinese.com
+  #- roodo.com
+  #- softonic.com
+  #- nextmedia.com
+  - gamer.com.tw
+  - ptt.cc
+  - bbs.kkcity.com.tw

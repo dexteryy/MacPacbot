@@ -1,0 +1,3 @@
+include *.ypac
+include *.vim
+include *.md
