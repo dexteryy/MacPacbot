@@ -2,13 +2,6 @@
 default_config:
   type: direct
 
-#uidev:  # 前端开发项目，代理到本地文件
-  #proxy: 127.0.0.1:8081
-  #type: proxy 
-  #rules:
-  #- tudou.com
-  #- tudouui.com
-
 #gfwsocks:
   #proxy: 127.0.0.1:7777
   #type: socks
@@ -17,9 +10,7 @@ default_config:
   ##- python.org
 
 gfw:
-  #proxy: 127.0.0.1:7777
-  #type: socks
-  proxy: 10.8.0.1:8118
+  proxy: 127.0.0.1:7777
   type: http 
   rules:
   - google.com
@@ -40,7 +31,6 @@ gfw:
   - hootsuite.com
   - facebook.com
   - fbcdn.net
-  #- apple.com
   - blogger.com
   - blogspot.com
   - wordpress.com
