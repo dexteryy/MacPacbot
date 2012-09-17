@@ -1,6 +1,6 @@
 # MacPacbot
 
-MacPacbot is a Python toolkit for PAC(auto proxy configuration) of Mac OS X, which makes it much easier to create, edit and enable PAC script.
+MacPacbot is a Python toolkit of PAC(auto proxy configuration) for Mac OS X, which makes it much easier to create, edit and enable PAC script.
 It could transform a simple YAML config into a valid PAC script. 
 
 ## Install
