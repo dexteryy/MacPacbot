@@ -117,34 +117,16 @@ def main(argv=None):
                    type="string")
     opt.add_option("-u", "--update",
                    dest="update",
-                   help="update NetworkInfo",
-                   action="store_true")
+                   help="update NetworkInfo with PAC file",
+                   metavar="FILE")
     opt.add_option("-o", "--output",
                    dest="outputfile",
                    help="write output to <file>",
                    metavar="FILE")
     (opt, args) = opt.parse_args()
 
-    isEnable = opt.state != 'off'
-
-    BIN_PATH = os.path.dirname(__file__)
-
-    if len(args) > 0:
-        configfile = args[0]
-    else:
-        configfile = os.path.join(BIN_PATH, 'rules.ypac')
-
-    if not os.path.isfile(configfile):
-        print('Sorry, I need rules file')
-        return
-
-    CONFIG_PATH = os.path.dirname(os.path.abspath(configfile))
-
-    outputfile = opt.outputfile or os.path.join(CONFIG_PATH, 'rules.pac')
-
-    cachefile = os.path.join('/tmp/networkInfoCache.pkl')
-
     pacbot = Pacbot()
+    cachefile = '/tmp/networkInfoCache.pkl'
 
     def update_cache():
         networkInfo = pacbot.updateNetworkInfo()
@@ -161,21 +143,35 @@ def main(argv=None):
     else:
         update_cache()
 
-    if opt.update:
-        if isEnable:
-            pacbot.enable(outputfile)
-        else:
-            pacbot.disable()
+    isEnable = opt.state != 'off'
+
+    if isEnable == False:
+        pacbot.disable()
         return
 
-    if isEnable:
-        data = yaml.load(open(configfile, 'r'))
-        for k, v in data.items():
-            pacbot.addServer(k, **v)
-        pacbot.save(outputfile)
-        pacbot.enable(outputfile)
+    if opt.update:
+        pacbot.enable(os.path.realpath(opt.update))
+        return
+
+    BIN_PATH = os.path.dirname(__file__)
+
+    if len(args) > 0:
+        configfile = args[0]
     else:
-        pacbot.disable()
+        configfile = os.path.join(BIN_PATH, 'rules.ypac')
+
+    if not os.path.isfile(configfile):
+        print('Sorry, I need rules file')
+        return
+
+    CONFIG_PATH = os.path.dirname(os.path.abspath(configfile))
+    outputfile = opt.outputfile or os.path.join(CONFIG_PATH, 'rules.pac')
+
+    data = yaml.load(open(configfile, 'r'))
+    for k, v in data.items():
+        pacbot.addServer(k, **v)
+    pacbot.save(outputfile)
+    pacbot.enable(outputfile)
 
 
 if __name__ == "__main__":

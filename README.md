@@ -9,13 +9,13 @@ It could transform a simple YAML config into a valid PAC script.
 
 ## Usage
 
-Transform YAML info PAC:
+Transform YAML info PAC, automatically detect network-service and update auto proxy configuration:
 
-    sudo pacbot <yaml_file> -o <pac_file>
+    sudo pacbot <yaml_file> [-o <pac_file>]
 
-Automatically detect network-service and update auto proxy configuration:
+Update auto proxy configuration with an existing PAC file:
 
-    sudo pacbot -u [-o <pac_file>]
+    sudo pacbot -u <pac_file>
 
 Disable auto proxy in current network-service:
 
@@ -25,7 +25,7 @@ Vim plugin:
 ```vim
     function! EnablePAC()
         if &filetype == 'javascript'
-            !sudo pacbot -u -o %
+            !sudo pacbot -u %
         elseif &filetype == 'yaml'
             !sudo pacbot %
         endif
