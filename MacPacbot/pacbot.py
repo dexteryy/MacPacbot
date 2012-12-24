@@ -58,7 +58,8 @@ class Pacbot():
     def getCode(self):
         """get code of PAC script"""
         tpl = Template(self.template)
-        data = self.servers.values()
+        data = [o for o in self.servers.values() if o['name'] != 'default_config']
+        data.insert(0, self.servers['default_config'])
         return tpl.render(data=data)
 
     def save(self, pacfile):

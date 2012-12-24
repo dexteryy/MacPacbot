@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name = 'MacPacbot',
-    version = '1.0.8',
+    version = '1.0.9',
     author = 'dexteryy',
     author_email = 'dexter.yy@gmail.com',
     url = 'http://dexteryy.github.com/MacPacbot',
